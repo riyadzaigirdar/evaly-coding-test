@@ -327,12 +327,12 @@
     
 #### Response
     {
-    "id": 10,
-    "member": 3,
-    "book": 4,
-    "is_accepted": false,
-    "is_rejected": false,
-    "is_returned": false
+        "id": 10,
+        "member": 3,
+        "book": 4,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
     }
     
     
