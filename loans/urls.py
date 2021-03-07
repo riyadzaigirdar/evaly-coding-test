@@ -10,5 +10,5 @@ router.register("loan", views.LoanView, basename="loan")
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('get-excel-for-loans', views.get_excel_for_loans)
+    path('get-excel-for-loans', views.get_excel_for_loans, name="excel")
 ]

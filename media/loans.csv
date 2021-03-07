@@ -1,5 +1,1 @@
 loan_id,member_id,member_name,book_name,book_id,is_accepted,is_rejected,is_returned
-2,3,onni,Harry Potter,1,False,False,False
-3,3,onni,Social Science,2,True,False,True
-4,3,onni,Social Science,2,True,False,True
-5,3,onni,Bangla Grammer,4,True,True,True

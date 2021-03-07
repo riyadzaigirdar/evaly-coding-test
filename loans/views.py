@@ -25,7 +25,7 @@ class LoanView(viewsets.ModelViewSet):
                 member__id=request.user.id), many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def create(self, request):
+    def create(self, request, *args, **kwargs):
         # only members can create/request for loans
         if not request.user.is_member:
             return Response({"message": "only members can create/request for loans"}, status=status.HTTP_403_FORBIDDEN)
@@ -33,13 +33,14 @@ class LoanView(viewsets.ModelViewSet):
             "member": request.user.id,
             **request.data
         }
+        # print(body)
         serializer = LoanSerializer(data=body)
 
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response({"message": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, pk, partial=False):
         # only admin will be able to update a loan request

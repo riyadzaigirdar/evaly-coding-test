@@ -37,7 +37,7 @@ def signup(request):
 @api_view(["GET"])
 def me(request):
     if type(request.user.id) == type(None):
-        return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
     else:
         return Response(UserProfileSerializer(get_user_model().objects.get(id=request.user.id)).data, status=status.HTTP_200_OK)
 

@@ -20,6 +20,8 @@ class BookView(viewsets.ModelViewSet):
 
     # only admin can create books
     def create(self, request):
+        if type(request.user.id) == type(None):
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         if not request.user.is_superuser:
             return Response({"message": "only admin can create books"}, status=status.HTTP_403_FORBIDDEN)
         serializer = serializers.BookSerializer(data=request.data)
@@ -31,6 +33,8 @@ class BookView(viewsets.ModelViewSet):
 
     # onle admin can update books
     def update(self, request, pk, partial=False):
+        if type(request.user.id) == type(None):
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         if not request.user.is_superuser:
             return Response({"message": "only admin can update books"}, status=status.HTTP_403_FORBIDDEN)
         book = Book.objects.filter(id=pk)
@@ -45,6 +49,8 @@ class BookView(viewsets.ModelViewSet):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, *args, **kwargs):
+        if type(request.user.id) == type(None):
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         if not request.user.is_superuser:
             return Response({"message": "only admin can update books"}, status=status.HTTP_403_FORBIDDEN)
         return super().destroy(request, *args, **kwargs)
@@ -58,13 +64,15 @@ class AuthorView(viewsets.ModelViewSet):
 
     # no authentication required for browsing list of authors and their published books
     def list(self, request, *args, **kwargs):
-        books = Author.objects.filter(is_publised=True)
+        books = Author.objects.all()
         serializer = serializers.AuthorSerializer(
             self.filter_queryset(books), many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # only admin can create authors
     def create(self, request):
+        if type(request.user.id) == type(None):
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         if not request.user.is_superuser:
             return Response({"message": "only admin can create authors"}, status=status.HTTP_403_FORBIDDEN)
         serializer = serializers.AuthorSerializer(data=request.data)
@@ -76,12 +84,14 @@ class AuthorView(viewsets.ModelViewSet):
 
     # onle admin can update author
     def update(self, request, pk, partial=False):
+        if type(request.user.id) == type(None):
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         if not request.user.is_superuser:
             return Response({"message": "only admin can update authors"}, status=status.HTTP_403_FORBIDDEN)
         author = Author.objects.filter(id=pk)
         if not author:
             return Response({"message": "author with that id not found"}, status=status.HTTP_404_NOT_FOUND)
-        serializer = serializers.BookSerializer(
+        serializer = serializers.AuthorSerializer(
             author[0], data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -91,6 +101,8 @@ class AuthorView(viewsets.ModelViewSet):
 
     # only admin can delete a author
     def destroy(self, request, *args, **kwargs):
+        if type(request.user.id) == type(None):
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         if not request.user.is_superuser:
             return Response({"message": "only admin can delete author"}, status=status.HTTP_403_FORBIDDEN)
         return super().destroy(request, *args, **kwargs)

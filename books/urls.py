@@ -6,8 +6,8 @@ app_name = 'books'
 
 router = DefaultRouter()
 
-router.register("books", views.BookView)
-router.register("author", views.AuthorView)
+router.register("books", views.BookView, basename="books")
+router.register("author", views.AuthorView, basename="author")
 
 urlpatterns = [
     path('', include(router.urls))
