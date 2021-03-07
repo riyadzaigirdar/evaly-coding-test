@@ -1,6 +1,6 @@
 # evaly-coding-test
 
-#### get excel download link
+#### 1. get excel download link
     
     curl --location --request GET 'http://127.0.0.1:8000/loans/get-excel-for-loans'
     
@@ -10,7 +10,7 @@
         "download_link": "http://127.0.0.1:8000/media/loans.csv"
     }
 
-#### Browse books
+#### 2. Browse books
 
     curl --location --request GET 'http://127.0.0.1:8000/browse/books' \
     --data-raw ''
@@ -65,7 +65,7 @@
       }
     ]
     
-#### search books using ?search query 
+#### 3. Search books using ?search query 
 
     curl --location --request GET 'http://127.0.0.1:8000/browse/books?search=Harry' \
     --data-raw ''
@@ -97,7 +97,7 @@
       }
     ]
     
-#### browse authors
+#### 4. Browse authors
 
     curl --location --request GET 'http://127.0.0.1:8000/browse/author'
 
@@ -142,7 +142,7 @@
       }
     ]
  
-#### search using search keyword
+#### 5. Search using search keyword
 
     curl --location --request GET 'http://127.0.0.1:8000/browse/author?search=john'
     
