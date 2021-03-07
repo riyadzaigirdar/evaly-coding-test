@@ -335,6 +335,25 @@
         "is_returned": false
     }
     
+#### 9. Update Load Request(only admin)
+
+    curl --location --request PATCH 'http://127.0.0.1:8000/loans/loan/2/' \
+    --header 'Authorization: Token fe46efb60cc0656528c7cbb7812d14ffac33742c' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "is_accepted": true,
+        "is_rejected": true,
+        "is_returned": true
+    }'
     
+#### Response
+    {
+        "id": 2,
+        "member": 3,
+        "book": 1,
+        "is_accepted": true,
+        "is_rejected": true,
+        "is_returned": true
+    }
     
     
