@@ -1,11 +1,21 @@
 # evaly-coding-test
 
-### Browse books
+#### get excel download link
+    
+    curl --location --request GET 'http://127.0.0.1:8000/loans/get-excel-for-loans'
+    
+#### Response
+    
+    {
+        "download_link": "http://127.0.0.1:8000/media/loans.csv"
+    }
+
+#### Browse books
 
     curl --location --request GET 'http://127.0.0.1:8000/browse/books' \
     --data-raw ''
 
-### Response
+#### Response
     [
       {
           "id": 1,
