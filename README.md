@@ -165,6 +165,175 @@
           ]
       }
     ]
+
+#### 6. List Loan Requests(member)(gets his own request)
+     curl --location --request GET 'http://127.0.0.1:8000/loans/loan' \
+     --header 'Authorization: Token d9a59df3ebf8ec04145d1cf47c0c5c9874a4f8bf'
+     
+#### Respone
+    
+    [
+    {
+        "id": 2,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 1,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    },
+    {
+        "id": 3,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 2,
+        "is_accepted": true,
+        "is_rejected": false,
+        "is_returned": true
+    },    
+    ]
+
+#### 7. List Loan Request(admin)(gets all request)
+
+    curl --location --request GET 'http://127.0.0.1:8000/loans/loan' \
+    --header 'Authorization: Token fe46efb60cc0656528c7cbb7812d14ffac33742c'
+
+#### Response
+    [
+    {
+        "id": 2,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 1,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    },
+    {
+        "id": 3,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 2,
+        "is_accepted": true,
+        "is_rejected": false,
+        "is_returned": true
+    },
+    {
+        "id": 4,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 2,
+        "is_accepted": true,
+        "is_rejected": false,
+        "is_returned": true
+    },
+    {
+        "id": 5,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 4,
+        "is_accepted": true,
+        "is_rejected": true,
+        "is_returned": true
+    },
+    {
+        "id": 6,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 4,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    },
+    {
+        "id": 7,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 4,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    },
+    {
+        "id": 8,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 4,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    },
+    {
+        "id": 9,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 4,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    },
+    {
+        "id": 10,
+        "member": {
+            "id": 3,
+            "name": "onni",
+            "email": "onni@gmail.com"
+        },
+        "book": 4,
+        "is_accepted": false,
+        "is_rejected": false,
+        "is_returned": false
+    }
+    ]
+
+#### 8. Create Loan Request(member)
+
+    curl --location --request POST 'http://127.0.0.1:8000/loans/loan/' \
+    --header 'Authorization: Token d9a59df3ebf8ec04145d1cf47c0c5c9874a4f8bf' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "book":4
+    }'
+    
+#### Response
+    {
+    "id": 10,
+    "member": 3,
+    "book": 4,
+    "is_accepted": false,
+    "is_rejected": false,
+    "is_returned": false
+    }
     
     
     
