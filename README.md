@@ -2,7 +2,8 @@
 
 #### 1. get excel download link
     
-    curl --location --request GET 'http://127.0.0.1:8000/loans/get-excel-for-loans'
+    curl --location --request GET 'http://127.0.0.1:8000/loans/get-excel-for-loans' \
+    --header 'Authorization: Token fe46efb60cc0656528c7cbb7812d14ffac33742c'
     
 #### Response
     
