@@ -67,6 +67,7 @@ class LoanView(viewsets.ModelViewSet):
 def get_excel_for_loans(request):
     if not request.user.is_superuser:
         return Response({"message": "only admin will be able to get excel loan request"}, status=status.HTTP_403_FORBIDDEN)
+
     loan_ids = []
     member_ids = []
     member_names = []
